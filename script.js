@@ -63,16 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-    });
+    // Disable custom cursor tracking natively on touch devices to save battery
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
     const infoPanel = document.querySelector('.info-panel');
-    infoPanel.addEventListener('mouseenter', () => cursor.classList.add('enter-mode'));
-    infoPanel.addEventListener('mouseleave', () => cursor.classList.remove('enter-mode'));
+    
+    if (!isTouchDevice) {
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+
+        infoPanel.addEventListener('mouseenter', () => cursor.classList.add('enter-mode'));
+        infoPanel.addEventListener('mouseleave', () => cursor.classList.remove('enter-mode'));
+    }
     infoPanel.addEventListener('click', () => {
         if (activeSectionIndex >= 0) {
             const pageName = sectionsData[activeSectionIndex].id.replace('bg-', '') + '.html';
