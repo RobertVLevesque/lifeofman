@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life of Man - Navigation Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="caliper-cursor"></div>
+
+    <!-- Fixed Magazine Title -->
+    <h1 class="magazine-title">LIFE OF MAN</h1>
+
+    <!-- Parallax Background Layers -->
+    <div class="background-container">
+        <!-- Intro Black Screen -->
+        <div id="bg-black" class="bg-layer intro-black"></div>
+        <!-- Background Sections -->
+        <div id="bg-woman" class="bg-layer section-bg"></div>
+        <div id="bg-health" class="bg-layer section-bg"></div>
+        <div id="bg-gear" class="bg-layer section-bg"></div>
+        <div id="bg-cars" class="bg-layer section-bg"></div>
+        <div id="bg-fashion" class="bg-layer section-bg"></div>
+        <!-- Texture overlay for cockpit feel -->
+        <div class="texture-overlay"></div>
+    </div>
+
+    <!-- Main Interface -->
+    <main class="hub-interaction">
+        <!-- Left/Center: The Watch Assembly -->
+        <div class="watch-container">
+            <div class="glow-ring"></div>
+            <!-- Base static casing (Lugs, outer metal ring, glass edges) -->
+            <img src="assets/watch_face.png" class="watch-casing-static" alt="LIFE OF MAN Casing">
+            <!-- Spinning middle donut (Gear teeth / Inner Bezel) -->
+            <img src="assets/watch_face.png" id="watch-bezel" class="watch-bezel" alt="LIFE OF MAN Bezel">
+            <!-- Top static dial (Numbers, logos, center) -->
+            <img src="assets/watch_face.png" id="watch-face-static" class="watch-face-static" alt="LIFE OF MAN Monogram Dial">
+            
+            <!-- Live Clock Overlay -->
+            <div class="live-clock">
+                <div class="date-window" id="date-window">--</div>
+                <div class="hand hour-hand" id="hour-hand"></div>
+                <div class="hand minute-hand" id="minute-hand"></div>
+                <div class="hand second-hand" id="second-hand"></div>
+                <div class="center-pin"></div>
+            </div>
+
+            <div class="multi-exposure-trail"></div>
+        </div>
+
+        <!-- Right: Technical Narrative Overlay -->
+        <div class="info-panel">
+            <div class="technical-header">
+                <span class="pulse-dot"></span>
+                <p class="mono-text typing-effect">SECTION IN FOCUS: <span id="dyn-section-name" class="highlight">FASHION</span></p>
+            </div>
+
+            <div class="narrative-content">
+                <p id="dyn-story-text" class="story-text">The Chronograph Narrative: An art-forward exploration of timeless masculinity. Turning the bezel selects the next chapter...</p>
+
+                <div class="data-points">
+                    <div class="data-row"><span id="dyn-label-1" class="data-label">Fabrication:</span> <span id="dyn-value-1" class="data-value">Wool Blend</span></div>
+                    <div class="data-row"><span id="dyn-label-2" class="data-label">Fit:</span> <span id="dyn-value-2" class="data-value">Tailored</span></div>
+                    <div class="data-row"><span id="dyn-label-3" class="data-label">Atmosphere:</span> <span id="dyn-value-3" class="data-value">Moody / Nocturnal</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
