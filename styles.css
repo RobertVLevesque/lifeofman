@@ -439,8 +439,104 @@ body {
     transform: translateX(-50%);
 }
 
-/* Responsive */
+/* --- Responsiveness & Mobile Optimization --- */
+
+/* Tablet & Smaller Laptops */
 @media (max-width: 1024px) {
-    .hub-interaction { flex-direction: column; padding: 2rem; gap: 2rem; }
-    .watch-container { width: 400px; height: 400px; }
+    .hub-interaction {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 3rem;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 8rem; /* Clear the title */
+    }
+
+    .watch-container {
+        width: 450px;
+        height: 450px;
+        transform: translateX(0); /* Re-center perfectly */
+    }
+
+    .info-panel {
+        max-width: 600px;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .magazine-title {
+        font-size: 1rem;
+        top: 2rem;
+        right: 2rem;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .watch-container {
+        width: 320px;
+        height: 320px;
+    }
+
+    .info-panel {
+        padding: 1.5rem;
+    }
+
+    .technical-header p {
+        font-size: 0.85rem;
+    }
+    
+    .story-text {
+        font-size: 0.95rem;
+    }
+
+    .data-label, .data-value {
+        font-size: 0.85rem;
+    }
+    
+    .live-clock .date-window {
+        font-size: 0.7rem;
+        right: 28%;
+    }
+
+    /* Subpage aggressive overrides */
+    .subpage-container {
+        padding: 2rem 1.5rem;
+        backdrop-filter: blur(35px); /* Much stronger blur for small screens */
+        background: rgba(10, 10, 12, 0.65);
+    }
+    
+    .back-btn {
+        bottom: 2rem !important; /* Forces override of inline styles if any */
+        right: 2rem !important;
+        font-size: 0.8rem !important;
+        padding: 8px 16px !important;
+    }
+
+    .subpage-title {
+        font-size: 2.2rem !important;
+        margin-top: 5rem !important;
+    }
+
+    .subpage-content {
+        font-size: 1rem !important;
+    }
+
+    .subpage-content h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .subpage-content h3 {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Hard Drop Custom Cursor on Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .caliper-cursor {
+        display: none !important;
+    }
+    * {
+        cursor: auto !important; /* Restore standard OS touch tap behaviors */
+    }
 }
