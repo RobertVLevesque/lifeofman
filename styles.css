@@ -131,39 +131,16 @@ body {
     transition: transform 0.3s ease;
 }
 
-.watch-casing-static {
+.vector-watch {
     width: 100%;
     height: 100%;
-    object-fit: contain;
     position: absolute;
     z-index: 1;
-    filter: drop-shadow(0 0 40px rgba(0,0,0,0.8));
-    /* Full bounds of the outer casing, static */
-    clip-path: circle(48% at 50% 50%);
 }
 
-.watch-bezel {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    position: absolute;
-    z-index: 2;
+#watch-bezel {
     transition: transform 0.1s linear;
     will-change: transform;
-    /* Strict middle donut ring trapped between 31% and this 40% mask */
-    clip-path: circle(40% at 50% 50%);
-}
-
-.watch-face-static {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 6; /* above the bezel */
-    /* Clip out the bezel to reveal only the inner watch face */
-    clip-path: circle(31% at 50% 50%);
 }
 
 /* --- Live Clock Elements --- */
@@ -180,8 +157,8 @@ body {
 
 .date-window {
     position: absolute;
-    top: 49.8%;
-    right: 27.5%;
+    top: 50%;
+    right: 27%;
     transform: translateY(-50%);
     background: transparent;
     color: var(--text-main);
