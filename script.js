@@ -161,18 +161,21 @@ document.addEventListener("DOMContentLoaded", () => {
             dynSectionName.style.opacity = 0;
             
             setTimeout(() => {
+                const dataPointsBox = document.getElementById('data-points-container');
+
                 if (!isHudAwake) {
                     // Sleep Mode: Clear all HUD data
                     dynSectionName.innerText = "SCROLL";
-                    dynLabel1.innerText = "—"; dynValue1.innerText = "—";
-                    dynLabel2.innerText = "—"; dynValue2.innerText = "—";
-                    dynLabel3.innerText = "—"; dynValue3.innerText = "—";
+                    dataPointsBox.style.display = 'none';
                     
                     document.querySelector('.pulse-dot').style.backgroundColor = "transparent";
                     document.querySelector('.pulse-dot').style.boxShadow = "none";
                     cursor.style.borderColor = "var(--text-main)";
                 } else {
                     // Awake Mode: Inject dynamic section data
+                    dataPointsBox.style.display = 'flex';
+                    dataPointsBox.style.opacity = 1;
+
                     const data = sectionsData[currentIndex];
                     
                     dynSectionName.innerText = data.title;
@@ -182,6 +185,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     dynValue2.innerText = data.value2;
                     dynLabel3.innerText = data.label3;
                     dynValue3.innerText = data.value3;
+
+                    // Physical Date-Wheel Snap Illusion
+                    dataPointsBox.classList.remove('roll-in');
+                    void dataPointsBox.offsetWidth; // Force geometric reflow to restart CSS animation frame
+                    dataPointsBox.classList.add('roll-in');
                     
                     const colors = ['var(--accent-amber)', '#a1a1a1', '#ff5500', '#00ffcc', '#ffd700'];
                     document.querySelector('.pulse-dot').style.backgroundColor = colors[currentIndex % colors.length];
