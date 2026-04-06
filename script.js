@@ -93,8 +93,37 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let activeSectionIndex = -4; // Initialize deeply negative to force update
     let isHudAwake = false; // Tracks if they have scrolled past intro
+    let isBootSequenceComplete = false; // Blocks SCROLL and scrolling actions until typing is done
 
     const subDepth = document.getElementById('subdial-depth');
+
+    // --- Typist Boot Sequence ---
+    const storyTextNode = document.getElementById('dyn-story-text');
+    const introString = "Life begins with you man";
+    let typeIndex = 0;
+    
+    function typeWriter() {
+        if (typeIndex < introString.length) {
+            storyTextNode.innerHTML += introString.charAt(typeIndex);
+            typeIndex++;
+            setTimeout(typeWriter, 40); // 40ms per character
+        } else {
+            // Finished typing. Wait 2 seconds, fade it out, then allow the HUD to show SCROLL.
+            setTimeout(() => {
+                storyTextNode.style.transition = "opacity 0.5s ease";
+                storyTextNode.style.opacity = 0;
+                
+                setTimeout(() => {
+                    isBootSequenceComplete = true; // Unlock the sequence
+                    storyTextNode.style.display = 'none'; // Remove it structurally so it collapses cleanly
+                    window.dispatchEvent(new Event('scroll')); // Force a scroll calculation to render SCROLL
+                }, 500);
+            }, 2000);
+        }
+    }
+    
+    // Start typing slightly after page boots
+    setTimeout(typeWriter, 500);
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
         const rawProgress = scrollY / maxScroll();
@@ -150,11 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
             activeSectionIndex = currentIndex;
             isHudAwake = shouldHudBeAwake;
 
-            // Animate watch scale down from 1.0 to 0.9 once past the intro screen
-            if (isHudAwake) {
-                watchContainer.classList.add('minimized');
-            } else {
-                watchContainer.classList.remove('minimized');
+            // Dynamically scale watch face by -10% at each scroll boundary (Click). Caps at 70%.
+            if (watchContainer) {
+                if (!isHudAwake) {
+                    watchContainer.style.transform = `translateX(-15%) scale(1.0)`;
+                } else {
+                    const targetScale = Math.max(0.7, 1.0 - ((currentIndex + 1) * 0.1));
+                    watchContainer.style.transform = `translateX(-15%) scale(${targetScale})`;
+                }
             }
 
             // Crossfade effect for the Section Title blending
@@ -165,7 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isHudAwake) {
                     // Sleep Mode: Clear all HUD data
-                    dynSectionName.innerText = "SCROLL";
+                    if (!isBootSequenceComplete) {
+                        dynSectionName.innerText = "";
+                    } else {
+                        dynSectionName.innerText = "SCROLL";
+                    }
                     dataPointsBox.style.display = 'none';
                     
                     document.querySelector('.pulse-dot').style.backgroundColor = "transparent";
@@ -186,10 +222,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     dynLabel3.innerText = data.label3;
                     dynValue3.innerText = data.value3;
 
-                    // Physical Date-Wheel Snap Illusion
-                    dataPointsBox.classList.remove('roll-in');
-                    void dataPointsBox.offsetWidth; // Force geometric reflow to restart CSS animation frame
-                    dataPointsBox.classList.add('roll-in');
+                    // Mechanical Cascade: Individually snap each sub-element staggered by 60 milliseconds
+                    const rows = dataPointsBox.querySelectorAll('.data-row');
+                    rows.forEach((row, index) => {
+                        row.classList.remove('roll-in');
+                        void row.offsetWidth; // Force geometric reflow
+                        setTimeout(() => {
+                            row.classList.add('roll-in');
+                        }, index * 60); // 60ms stagger per row!
+                    });
                     
                     const colors = ['var(--accent-amber)', '#a1a1a1', '#ff5500', '#00ffcc', '#ffd700'];
                     document.querySelector('.pulse-dot').style.backgroundColor = colors[currentIndex % colors.length];
