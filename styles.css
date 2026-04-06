@@ -246,20 +246,7 @@ body {
 }
 
 .multi-exposure-trail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/watch_face.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    opacity: 0;
-    z-index: 3;
-    filter: blur(4px) brightness(1.5);
-    transition: opacity 0.1s;
+    display: none;
 }
 
 /* --- Info Panel --- */
