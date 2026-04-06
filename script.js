@@ -108,16 +108,30 @@ document.addEventListener("DOMContentLoaded", () => {
             typeIndex++;
             setTimeout(typeWriter, 40); // 40ms per character
         } else {
-            // Finished typing. Wait 2 seconds, fade it out, then allow the HUD to show SCROLL.
+            // Typing finished. Hold for 2 seconds.
             setTimeout(() => {
-                storyTextNode.style.transition = "opacity 0.5s ease";
-                storyTextNode.style.opacity = 0;
+                // 1. Reveal Info Box Glass Background
+                const infoPanel = document.getElementById('info-panel');
+                if (infoPanel) infoPanel.classList.remove('boot-hidden');
                 
+                // 2. Wait 800ms, Reveal Section Header ("SECTION IN FOCUS:")
                 setTimeout(() => {
-                    isBootSequenceComplete = true; // Unlock the sequence
-                    storyTextNode.style.display = 'none'; // Remove it structurally so it collapses cleanly
-                    window.dispatchEvent(new Event('scroll')); // Force a scroll calculation to render SCROLL
-                }, 500);
+                    const techHeader = document.getElementById('technical-header');
+                    if (techHeader) techHeader.classList.remove('boot-hidden');
+                    
+                    // 3. Wait 800ms, Fade out the welcome text "Life begins with you man"
+                    setTimeout(() => {
+                        storyTextNode.style.transition = "opacity 0.6s ease";
+                        storyTextNode.style.opacity = 0;
+                        
+                        // 4. Wait for fade to finish, collapse text node, allow SCROLL to emerge
+                        setTimeout(() => {
+                            isBootSequenceComplete = true; // Unlock the sequence
+                            storyTextNode.style.display = 'none'; // Structural collapse
+                            window.dispatchEvent(new Event('scroll')); // Triggers "SCROLL"
+                        }, 600);
+                    }, 800);
+                }, 800);
             }, 2000);
         }
     }
