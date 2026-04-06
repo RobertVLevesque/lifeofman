@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeSectionIndex = -4; // Initialize deeply negative to force update
     let isHudAwake = false; // Tracks if they have scrolled past intro
 
+    const subDepth = document.getElementById('subdial-depth');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
         const rawProgress = scrollY / maxScroll();
@@ -103,8 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // EXACTLY 360 degrees mapped across the entire scroll flow
         currentRotation = scrollProgress * 360;
         
-        watchBezel.style.transform = `rotate(${currentRotation}deg)`;
-        trail.style.transform = `rotate(${currentRotation - 5}deg)`;
+        if (watchBezel) watchBezel.style.transform = `rotate(${currentRotation}deg)`;
+        if (trail) trail.style.transform = `rotate(${currentRotation - 5}deg)`;
+
+        // --- Depth Gauge Mechanics ---
+        // Sweeps like a speedometer from -135deg to +135deg based on scroll depth
+        if (subDepth) {
+            const depthDeg = -135 + (scrollProgress * 270);
+            subDepth.style.transform = `rotate(${depthDeg}deg)`;
+        }
         
         // Scrub visual state
         if (!isScrubbing) {
@@ -216,10 +224,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const minuteHand = document.getElementById('minute-hand');
     const secondHand = document.getElementById('second-hand');
     const dateWindow = document.getElementById('date-window');
+    
+    // SVG Subdials
+    const subMsec = document.getElementById('subdial-msec');
+    const sub24hr = document.getElementById('subdial-24hr');
 
     function updateClock() {
         const now = new Date();
-        const seconds = now.getSeconds() + (now.getMilliseconds() / 1000);
+        const msec = now.getMilliseconds();
+        const seconds = now.getSeconds() + (msec / 1000);
         const mins = now.getMinutes() + (seconds / 60);
         const hours = (now.getHours() % 12) + (mins / 60);
 
@@ -232,9 +245,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const minuteDeg = mins * 6;
         const hourDeg = hours * 30;
 
+        // Subdial Math
+        // Sweeping Millisecond Hand (1 full rotation every second = insanely fast mechanical look)
+        const msecDeg = (msec / 1000) * 360;
+        
         secondHand.style.transform = `rotate(${secondDeg}deg)`;
         minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
         hourHand.style.transform = `rotate(${hourDeg}deg)`;
+        
+        if(subMsec) subMsec.style.transform = `rotate(${msecDeg}deg)`;
 
         requestAnimationFrame(updateClock);
     }
