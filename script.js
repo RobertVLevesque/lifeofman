@@ -150,33 +150,46 @@ document.addEventListener("DOMContentLoaded", () => {
             activeSectionIndex = currentIndex;
             isHudAwake = shouldHudBeAwake;
 
-            if (!isHudAwake) {
-                // Sleep Mode: Clear all HUD data
-                dynSectionName.innerText = "AWAITING...";
-                dynLabel1.innerText = "—"; dynValue1.innerText = "—";
-                dynLabel2.innerText = "—"; dynValue2.innerText = "—";
-                dynLabel3.innerText = "—"; dynValue3.innerText = "—";
-                
-                document.querySelector('.pulse-dot').style.backgroundColor = "transparent";
-                document.querySelector('.pulse-dot').style.boxShadow = "none";
-                cursor.style.borderColor = "var(--text-main)";
+            // Animate watch scale down from 1.0 to 0.9 once past the intro screen
+            if (isHudAwake) {
+                watchContainer.classList.add('minimized');
             } else {
-                // Awake Mode: Inject dynamic section data
-                const data = sectionsData[currentIndex];
-                
-                dynSectionName.innerText = data.title;
-                dynLabel1.innerText = data.label1;
-                dynValue1.innerText = data.value1;
-                dynLabel2.innerText = data.label2;
-                dynValue2.innerText = data.value2;
-                dynLabel3.innerText = data.label3;
-                dynValue3.innerText = data.value3;
-                
-                const colors = ['var(--accent-amber)', '#a1a1a1', '#ff5500', '#00ffcc', '#ffd700'];
-                document.querySelector('.pulse-dot').style.backgroundColor = colors[currentIndex % colors.length];
-                document.querySelector('.pulse-dot').style.boxShadow = `0 0 10px ${colors[currentIndex % colors.length]}`;
-                cursor.style.borderColor = colors[currentIndex % colors.length];
+                watchContainer.classList.remove('minimized');
             }
+
+            // Crossfade effect for the Section Title blending
+            dynSectionName.style.opacity = 0;
+            
+            setTimeout(() => {
+                if (!isHudAwake) {
+                    // Sleep Mode: Clear all HUD data
+                    dynSectionName.innerText = "SCROLL";
+                    dynLabel1.innerText = "—"; dynValue1.innerText = "—";
+                    dynLabel2.innerText = "—"; dynValue2.innerText = "—";
+                    dynLabel3.innerText = "—"; dynValue3.innerText = "—";
+                    
+                    document.querySelector('.pulse-dot').style.backgroundColor = "transparent";
+                    document.querySelector('.pulse-dot').style.boxShadow = "none";
+                    cursor.style.borderColor = "var(--text-main)";
+                } else {
+                    // Awake Mode: Inject dynamic section data
+                    const data = sectionsData[currentIndex];
+                    
+                    dynSectionName.innerText = data.title;
+                    dynLabel1.innerText = data.label1;
+                    dynValue1.innerText = data.value1;
+                    dynLabel2.innerText = data.label2;
+                    dynValue2.innerText = data.value2;
+                    dynLabel3.innerText = data.label3;
+                    dynValue3.innerText = data.value3;
+                    
+                    const colors = ['var(--accent-amber)', '#a1a1a1', '#ff5500', '#00ffcc', '#ffd700'];
+                    document.querySelector('.pulse-dot').style.backgroundColor = colors[currentIndex % colors.length];
+                    document.querySelector('.pulse-dot').style.boxShadow = `0 0 10px ${colors[currentIndex % colors.length]}`;
+                    cursor.style.borderColor = colors[currentIndex % colors.length];
+                }
+                dynSectionName.style.opacity = 1;
+            }, 300);
         }
 
         // Visual calculation for layers (Auto-calc for N sections)
