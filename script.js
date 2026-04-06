@@ -214,6 +214,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+
+        // --- Optical Glow Transition ---
+        const transGlow = document.getElementById('transition-glow');
+        if (transGlow) {
+            // Only trigger glow if we are past the initial black screen
+            if (activeSectionIndex >= 0) {
+                const exactBoundary = Math.round(scrollProgress / chunk) * chunk;
+                const distance = Math.abs(scrollProgress - exactBoundary);
+                
+                // Creates a tiny active window of 4% of the entire page scroll (0.04) 
+                // where the glow flares up dramatically as sections cross over
+                const transitionWidth = 0.04;
+                if (distance < transitionWidth) {
+                    const spike = 1 - (distance / transitionWidth);
+                    transGlow.style.opacity = Math.pow(spike, 2); // Squared to make the flash punchier
+                } else {
+                    transGlow.style.opacity = 0;
+                }
+            } else {
+                transGlow.style.opacity = 0;
+            }
+        }
     });
 
     // Force initialization of layout
