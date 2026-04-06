@@ -286,6 +286,19 @@ body {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 1s ease;
+}
+
+.technical-header.boot-hidden {
+    opacity: 0 !important;
+}
+
+.info-panel.boot-hidden {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 
 .pulse-dot {
