@@ -138,11 +138,15 @@ body {
     position: relative;
     width: 800px;
     height: 800px;
-    transform: translateX(-15%); /* Pull slightly left off-center */
+    transform: translateX(-15%) scale(1); /* Pull slightly left off-center */
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.watch-container.minimized {
+    transform: translateX(-15%) scale(0.9);
 }
 
 .vector-watch {
@@ -298,11 +302,18 @@ body {
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 157, 0, 0); }
 }
 
+@keyframes rhythmicFadeIn {
+    0% { opacity: 0; filter: blur(4px); transform: translateX(-10px); }
+    100% { opacity: 1; filter: blur(0px); transform: translateX(0); }
+}
+
 .mono-text {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     color: var(--text-muted);
+    opacity: 0;
+    animation: rhythmicFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .highlight {
@@ -316,8 +327,10 @@ body {
     margin-bottom: 2rem;
     color: #cccccc;
     font-weight: 300;
+    opacity: 0;
+    /* Delays exactly 2 seconds so it arrives in sync with the second pulse! */
+    animation: rhythmicFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 2s forwards;
 }
-
 .data-points {
     display: flex;
     flex-direction: column;
