@@ -4,223 +4,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life of Man - Cars</title>
+    <title>Life of Man - Navigation Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;600&display=swap"
         rel="stylesheet">
-    <style>
-        body {
-            overflow-y: auto;
-            height: auto;
-            background-color: #000;
-            cursor: auto;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('assets/car4.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.05;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .subpage-container {
-            background: rgba(10, 10, 12, 0.4); /* Lowered container backdrop opacity slightly so the 5% background shows through better */
-            min-height: 100vh;
-            padding: 6rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .back-btn {
-            position: fixed;
-            bottom: 3.5rem;
-            right: 4rem;
-            color: var(--text-main);
-            font-family: 'JetBrains Mono', monospace;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 4px;
-            transition: 0.3s;
-            z-index: 100;
-            letter-spacing: 1px;
-        }
-
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-            transform: scale(1.05);
-        }
-
-        .subpage-title {
-            font-size: 4rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            margin-top: 4rem;
-        }
-
-        .subpage-content {
-            max-width: 800px;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-            font-weight: 300;
-        }
-
-        .subpage-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .fade-out-header {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 12rem;
-            background: linear-gradient(to bottom, #000 20%, transparent);
-            z-index: 50;
-            pointer-events: none;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="fade-out-header"></div>
-    <a href="index.html" class="back-btn">← RETURN TO HUB</a>
-    <h1 class="magazine-title" style="top: 3.5rem; right: 4rem;">LIFE OF MAN</h1>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="caliper-cursor"></div>
 
-    <div class="subpage-container">
-        <h1 class="subpage-title">CARS</h1>
-        <div class="subpage-content">
-            <h2 style="font-size: 2rem; color: #fff; margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">The
-                Canadian Ghost with 1,500 Horsepower: A 1966 Pontiac Beaumont Reborn</h2>
+    <!-- Fixed Magazine Title -->
+    <h1 class="magazine-title">LIFE OF MAN</h1>
 
-            <p>There are muscle cars… and then there are machines that feel like they’ve slipped through a crack in
-                time—equal parts heritage, rebellion, and mechanical insanity. This twin-turbocharged 1966 Pontiac
-                Beaumont, currently offered by August Motorcars, is firmly in the latter category.</p>
-
-            <p>It doesn’t just rewrite the rules of classic performance—it erases them entirely.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">A
-                Forgotten Canadian Icon</h3>
-
-            <p>Before we get to the violence lurking under the hood, it’s worth understanding the canvas.</p>
-
-            <p>The Beaumont is one of those beautifully obscure chapters in automotive history—a Canadian-market
-                creation born from General Motors’ need to satisfy domestic production rules in the 1960s. Built between
-                1966 and 1969, it blended Chevrolet underpinnings with Pontiac styling cues, essentially becoming a
-                uniquely Canadian hybrid of Chevelle muscle and GTO attitude.</p>
-
-            <p>In its purest form, the Beaumont was never meant to be outrageous. It was subtle. Understated. A quiet
-                insider’s muscle car.</p>
-
-            <p>This one? Not so much.</p>
-
-            <!-- Embedded Photo 1 -->
-            <img src="assets/car1.png" style="width: 100%; border-radius: 8px; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">The
-                Heart of a Monster</h3>
-
-            <p>Let’s be clear: this is not a restoration.</p>
-            <p>This is a declaration of war.</p>
-
-            <p>Under the hood sits a twin-turbocharged 502 cubic-inch (8.2L) big-block V8, meticulously built and
-                force-fed by a pair of turbos. The result? Over 1,500 horsepower, dyno-proven.</p>
-
-            <p>That kind of power doesn’t belong in 1966. Frankly, it barely belongs in 2026.</p>
-
-            <p>Backing it up is a T56 Magnum 6-speed manual, sending power to a bulletproof Ford 9-inch rear end. This
-                isn’t just about brute force—it’s engineered brutality, the kind you can actually control… assuming your
-                right foot has discipline.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">Built,
-                Not Restored</h3>
-
-            <p>The real story here is the build quality.</p>
-            <p>This Beaumont rides on a modern Art Morrison Max G chassis, paired with C5 Corvette suspension components
-                and a triangulated four-link rear.</p>
-
-            <p>Translation? It handles like something born decades later—because, in many ways, it was.</p>
-
-            <p>Braking is handled by Wilwood performance discs, hiding behind aggressive modern wheels. Grip is massive.
-                Stance is perfect. Nothing about this car is accidental.</p>
-
-
-            <!-- Embedded Photo 2 -->
-            <img src="assets/car2.png" style="width: 100%; border-radius: 8px; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">A Global
-                Interior in a Canadian Body</h3>
-
-            <p>Then you step inside… and the story shifts again.</p>
-            <p>This isn’t a time capsule—it’s a curated collision of automotive royalty:</p>
-
-            <ul style="margin-left: 2rem; margin-bottom: 2rem; list-style-type: square; color: #aaa;">
-                <li>Aston Martin interior elements</li>
-                <li>Audi R8 mirrors</li>
-                <li>Recaro performance seats (heated, ventilated, power-adjustable)</li>
-                <li>A hidden roll cage, integrated cleanly into the cabin</li>
-            </ul>
-
-            <p>It’s part muscle car, part European grand tourer, part track weapon.<br>And somehow, it works.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">The
-                Philosophy of Excess</h3>
-
-            <p>Cars like this exist in a strange space.</p>
-            <ul style="list-style: none; margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid #555;">
-                <li>They aren’t restorations.</li>
-                <li>They aren’t replicas.</li>
-                <li>They aren’t even restomods in the traditional sense.</li>
-            </ul>
-
-            <p>They are reinterpretations—what happens when you take a historically overlooked platform and ask:</p>
-
-            <blockquote
-                style="font-size: 1.6rem; font-style: italic; color: #fff; margin: 2rem 0; padding-left: 2rem; border-left: 4px solid var(--accent-amber);">
-                “What if this had no limits?”</blockquote>
-
-            <p>The answer is sitting here in gloss black, idling with the quiet menace of something that knows exactly
-                how dangerous it is.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">Price of
-                Madness</h3>
-
-            <p>Listed at roughly $300,000 CAD, this Beaumont isn’t cheap—but it’s also not trying to be.<br>Because
-                you’re not just buying a car.</p>
-
-            <p>You’re buying:</p>
-            <ul style="margin-left: 2rem; margin-bottom: 2rem; list-style-type: square; color: #ccc;">
-                <li>A one-off build from a top-tier fabricator</li>
-                <li>A 1,500 horsepower statement piece</li>
-                <li>A slice of Canadian automotive history—rewritten</li>
-            </ul>
-
-            <h3
-                style="font-size: 1.5rem; color: #fff; margin-top: 3.5rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">
-                Final Verdict</h3>
-
-            <p>In a world flooded with predictable builds—LS swaps, bolt-ons, cookie-cutter restorations—this Beaumont
-                feels like a punch in the chest.</p>
-
-            <p>It’s rare.<br>It’s unapologetic.<br>It’s wildly overbuilt.</p>
-
-            <p>And most importantly… it’s unforgettable.</p>
-
-            <p style="font-size: 1.4rem; color: #fff; margin-top: 4rem; text-align: center;">This isn’t just a car you
-                drive.</p>
-            <p
-                style="font-size: 2rem; font-weight: 700; color: var(--accent-amber); text-align: center; letter-spacing: 2px; margin-bottom: 4rem;">
-                IT'S A CAR YOU SURVIVE.</p>
-        </div>
+    <!-- Parallax Background Layers -->
+    <div class="background-container">
+        <!-- Intro Black Screen -->
+        <div id="bg-black" class="bg-layer intro-black"></div>
+        <!-- Background Sections -->
+        <div id="bg-woman" class="bg-layer section-bg"></div>
+        <div id="bg-health" class="bg-layer section-bg"></div>
+        <div id="bg-gear" class="bg-layer section-bg"></div>
+        <div id="bg-cars" class="bg-layer section-bg"></div>
+        <div id="bg-fashion" class="bg-layer section-bg"></div>
+        <!-- Texture overlay for cockpit feel -->
+        <div class="texture-overlay"></div>
+        <div id="transition-glow" class="transition-glow"></div>
     </div>
+
+    <!-- Main Interface -->
+    <main class="hub-interaction">
+        <!-- Left/Center: The Watch Assembly -->
+        <div class="watch-container">
+            <!-- Architectural SVG Vector Watch Engine -->
+            <svg viewBox="0 0 1000 1000" class="vector-watch" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="dialGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#18181a"/>
+                        <stop offset="100%" stop-color="#0a0a0c"/>
+                    </radialGradient>
+                    <linearGradient id="metalDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2a2a2d"/>
+                        <stop offset="50%" stop-color="#141416"/>
+                        <stop offset="100%" stop-color="#1a1a1c"/>
+                    </linearGradient>
+                    <linearGradient id="metalLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4a4a4f"/>
+                        <stop offset="50%" stop-color="#222"/>
+                        <stop offset="100%" stop-color="#3a3a3d"/>
+                    </linearGradient>
+                    <filter id="vectorShadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="15" stdDeviation="20" flood-color="#000" flood-opacity="0.8"/>
+                    </filter>
+                </defs>
+
+                <!-- STATIC CASING & LUGS (OUTERMOST) -->
+                <g class="svg-casing" filter="url(#vectorShadow)">
+                    <!-- Sharp Tactical Lugs -->
+                    <path d="M 300 200 L 250 50 L 380 50 L 450 150 Z" fill="url(#metalDark)" />
+                    <path d="M 700 200 L 750 50 L 620 50 L 550 150 Z" fill="url(#metalDark)" />
+                    <path d="M 300 800 L 250 950 L 380 950 L 450 850 Z" fill="url(#metalDark)" />
+                    <path d="M 700 800 L 750 950 L 620 950 L 550 850 Z" fill="url(#metalDark)" />
+
+                    <!-- Main Casing Barrel -->
+                    <circle cx="500" cy="500" r="460" fill="url(#metalDark)" />
+                    <circle cx="500" cy="500" r="445" fill="none" stroke="url(#metalLight)" stroke-width="6" />
+
+                    <!-- Tactical 6-point Hex Screws -->
+                    <circle cx="170" cy="170" r="22" fill="#111" />
+                    <polygon points="170,154 184,162 184,178 170,186 156,178 156,162" fill="#333" />
+                    
+                    <circle cx="830" cy="170" r="22" fill="#111" />
+                    <polygon points="830,154 844,162 844,178 830,186 816,178 816,162" fill="#333" />
+
+                    <circle cx="170" cy="830" r="22" fill="#111" />
+                    <polygon points="170,814 184,822 184,838 170,846 156,838 156,822" fill="#333" />
+
+                    <circle cx="830" cy="830" r="22" fill="#111" />
+                    <polygon points="830,814 844,822 844,838 830,846 816,838 816,822" fill="#333" />
+                </g>
+
+                <!-- DYNAMIC SPINNING BEZEL -->
+                <!-- We apply id="watch-bezel" directly so existing JS hooks it -->
+                <g id="watch-bezel" style="transform-origin: 50% 50%;">
+                    <!-- Outer Orange Ring Base -->
+                    <circle cx="500" cy="500" r="430" fill="#0d0d0f" stroke="var(--accent-amber)" stroke-width="4" />
+                    
+                    <!-- Tactical Gear Teeth (Dasharray math: circumference 2*pi*r ~ 2576. 72 teeth = 35.7 dash) -->
+                    <circle cx="500" cy="500" r="415" fill="none" stroke="#222" stroke-width="30" stroke-dasharray="17.8 17.8" />
+                    
+                    <!-- Bezel Inner Slant -->
+                    <circle cx="500" cy="500" r="395" fill="url(#metalDark)" />
+                    <circle cx="500" cy="500" r="335" fill="#050505" />
+
+                    <!-- Bezel Ticks and Metrics -->
+                    <circle cx="500" cy="500" r="375" fill="none" stroke="#555" stroke-width="20" stroke-dasharray="2 17.6" />
+                    <!-- Thicker hour ticks -->
+                    <circle cx="500" cy="500" r="375" fill="none" stroke="var(--accent-amber)" stroke-width="30" stroke-dasharray="8 88" />
+
+                    <!-- Primary 12 O'Clock Dive Triangle -->
+                    <polygon points="500,110 530,165 470,165" fill="var(--accent-amber)" />
+                    <circle cx="500" cy="145" r="5" fill="#fff" />
+                    
+                    <text x="500" y="870" fill="#666" font-family="'JetBrains Mono'" font-weight="700" font-size="28" text-anchor="middle">30</text>
+                    <text x="860" y="510" fill="#666" font-family="'JetBrains Mono'" font-weight="700" font-size="28" text-anchor="middle">15</text>
+                    <text x="140" y="510" fill="#666" font-family="'JetBrains Mono'" font-weight="700" font-size="28" text-anchor="middle">45</text>
+                </g>
+
+                <!-- STATIC INNER DIAL -->
+                <g id="watch-face-static" style="transform-origin: 50% 50%;">
+                    <!-- Dial Glass & Inner Base -->
+                    <circle cx="500" cy="500" r="330" fill="url(#dialGrad)" />
+                    <circle cx="500" cy="500" r="330" fill="none" stroke="#444" stroke-width="2" />
+
+                    <!-- Chronograph Subdials -->
+                    <!-- Left Subdial (Milliseconds) -->
+                    <circle cx="340" cy="500" r="65" fill="#050505" stroke="#1c1c1e" stroke-width="2"/>
+                    <circle cx="340" cy="500" r="65" fill="none" stroke="#444" stroke-width="6" stroke-dasharray="4 16.4" />
+                    <!-- Subdial Hand Group -->
+                    <g id="subdial-msec" style="transform-origin: 340px 500px;">
+                        <circle cx="340" cy="500" r="4" fill="#aaa" />
+                        <polygon points="340,500 338,450 342,450" fill="#aaa" />
+                    </g>
+
+                    <!-- Bottom Subdial (Depth Gauge) -->
+                    <circle cx="500" cy="650" r="65" fill="#050505" stroke="#1c1c1e" stroke-width="2"/>
+                    <circle cx="500" cy="650" r="65" fill="none" stroke="var(--accent-amber)" stroke-width="6" stroke-dasharray="4 16.4" opacity="0.6"/>
+                    <text x="500" y="615" fill="#444" font-family="'JetBrains Mono'" font-size="10" text-anchor="middle">DEPTH</text>
+                    <!-- Subdial Hand Group -->
+                    <g id="subdial-depth" style="transform-origin: 500px 650px; transform: rotate(-135deg);">
+                        <circle cx="500" cy="650" r="4" fill="var(--accent-amber)" />
+                        <polygon points="500,650 498,605 502,605" fill="var(--accent-amber)" />
+                    </g>
+
+                    <!-- LOM Custom Geometric Monogram -->
+                    <g transform="translate(500, 260)">
+                        <path d="M -32,-14 L -32,14 L -16,14" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="bevel" />
+                        <circle cx="0" cy="0" r="15" fill="none" stroke="var(--accent-amber)" stroke-width="4" />
+                        <path d="M 16,14 L 16,-14 L 24,4 L 32,-14 L 32,14" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="bevel" />
+                    </g>
+
+                    <!-- Inner Typography -->
+                    <text x="500" y="340" fill="#fff" font-family="'Outfit', sans-serif" font-weight="700" font-size="34" letter-spacing="8" text-anchor="middle">LIFE OF MAN</text>
+                    <text x="500" y="370" fill="var(--accent-amber)" font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="4" text-anchor="middle">AUTOMATIC . 1500M</text>
+                    
+                    <!-- Exact Match Date Cutout Window -->
+                    <rect x="690" y="475" width="80" height="50" rx="4" fill="#000" stroke="#333" stroke-width="2"/>
+                    <text x="705" y="465" fill="#444" font-family="'JetBrains Mono'" font-size="12" letter-spacing="1">DATE</text>
+
+                    <!-- Hour Index Markers Inner -->
+                    <circle cx="500" cy="500" r="300" fill="none" stroke="#fff" stroke-width="12" stroke-dasharray="6 151" opacity="0.8"/>
+                </g>
+            </svg>
+            
+            <!-- Live Clock Overlay -->
+            <div class="live-clock">
+                <div class="date-window" id="date-window">--</div>
+                <div class="hand hour-hand" id="hour-hand"></div>
+                <div class="hand minute-hand" id="minute-hand"></div>
+                <div class="hand second-hand" id="second-hand"></div>
+                <div class="center-pin"></div>
+            </div>
+
+            <div class="multi-exposure-trail"></div>
+        </div>
+
+        <!-- Right: Technical Narrative Overlay -->
+        <div class="info-panel boot-hidden" id="info-panel">
+            <div class="technical-header boot-hidden" id="technical-header">
+                <span class="pulse-dot"></span>
+                <p class="mono-text typing-effect">SECTION IN FOCUS: <span id="dyn-section-name" class="highlight"></span></p>
+            </div>
+
+            <div class="narrative-content">
+                <p id="dyn-story-text" class="story-text"></p>
+
+                <div id="data-points-container" class="data-points" style="display: none; opacity: 0;">
+                    <div class="data-row"><span id="dyn-label-1" class="data-label">—</span> <span id="dyn-value-1" class="data-value">—</span></div>
+                    <div class="data-row"><span id="dyn-label-2" class="data-label">—</span> <span id="dyn-value-2" class="data-value">—</span></div>
+                    <div class="data-row"><span id="dyn-label-3" class="data-label">—</span> <span id="dyn-value-3" class="data-value">—</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
