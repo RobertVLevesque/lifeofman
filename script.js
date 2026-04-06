@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Scrub visual state
         if (!isScrubbing) {
             isScrubbing = true;
-            watchContainer.classList.add('active-scrub');
+            infoPanel.classList.add('active-scrub');
             cursor.classList.add('scrubbing');
             trail.style.opacity = '0.4';
         }
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(scrubTimeout);
         scrubTimeout = setTimeout(() => {
             isScrubbing = false;
-            watchContainer.classList.remove('active-scrub');
+            infoPanel.classList.remove('active-scrub');
             cursor.classList.remove('scrubbing');
             trail.style.opacity = '0';
             trail.style.transform = `rotate(${currentRotation}deg)`; 
