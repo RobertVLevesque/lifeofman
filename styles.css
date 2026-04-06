@@ -261,6 +261,10 @@ body {
     border-radius: 8px;
     padding: 2.5rem;
     max-width: 450px;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     z-index: 10;
     transform: translateY(0);
@@ -305,6 +309,17 @@ body {
 @keyframes rhythmicFadeIn {
     0% { opacity: 0; filter: blur(4px); transform: translateX(-10px); }
     100% { opacity: 1; filter: blur(0px); transform: translateX(0); }
+}
+
+@keyframes mechanicalDrumSnap {
+    0% { transform: translateY(-12px); opacity: 0; filter: blur(2px); }
+    70% { transform: translateY(2px); opacity: 1; filter: blur(0px); }
+    100% { transform: translateY(0); opacity: 1; filter: blur(0px); }
+}
+
+.roll-in {
+    /* Fast, heavily eased snapping animation mimicking physical gear lock */
+    animation: mechanicalDrumSnap 0.25s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
 }
 
 .mono-text {
