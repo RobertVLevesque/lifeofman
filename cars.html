@@ -11,8 +11,8 @@
         rel="stylesheet">
     <style>
         body {
-            overflow-y: auto;
-            height: auto;
+            overflow: hidden; /* Lock native scroll */
+            height: 100vh;
             background-color: #000;
             cursor: auto;
         }
@@ -26,17 +26,10 @@
             height: 100%;
             background-image: url('assets/car4.png');
             background-size: cover;
-            background-position: center;
+            background-position: calc(center + var(--kinetic-bg-x, 0px));
             opacity: 0.05;
             z-index: -1;
             pointer-events: none;
-        }
-
-        .subpage-container {
-            background: rgba(10, 10, 12, 0.4); /* Lowered container backdrop opacity slightly so the 5% background shows through better */
-            min-height: 100vh;
-            padding: 6rem;
-            backdrop-filter: blur(10px);
         }
 
         .back-btn {
@@ -61,30 +54,15 @@
         }
 
         .subpage-title {
-            font-size: 4rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            margin-top: 4rem;
-        }
-
-        .subpage-content {
-            max-width: 800px;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-            font-weight: 300;
-        }
-
-        .subpage-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .fade-out-header {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 12rem;
-            background: linear-gradient(to bottom, #000 20%, transparent);
-            z-index: 50;
+            top: 6rem;
+            left: 6rem;
+            font-size: 5rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin: 0;
+            z-index: 10;
+            opacity: 0.2;
             pointer-events: none;
         }
     </style>
@@ -95,103 +73,61 @@
     <a href="index.html" class="back-btn">← RETURN TO HUB</a>
     <h1 class="magazine-title" style="top: 3.5rem; right: 4rem;">LIFE OF MAN</h1>
 
-    <div class="subpage-container">
-        <h1 class="subpage-title">CARS</h1>
-        <div class="subpage-content">
-            <h2 style="font-size: 2rem; color: #fff; margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">The Canadian Ghost with 1,500 Horsepower: A 1966 Pontiac Beaumont Reborn</h2>
+    <h1 class="subpage-title">CARS</h1>
 
-            <p>There are muscle cars… and then there are machines that feel like they’ve slipped through a crack in time—equal parts heritage, rebellion, and mechanical insanity. This twin-turbocharged 1966 Pontiac Beaumont, currently offered by August Motorcars, is firmly in the latter category.</p>
+    <main class="kinetic-viewport">
+        <div class="kinetic-ribbon">
+            <!-- Story 1: Beaumont -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/Belmont_thumbnail.png" alt="1966 Pontiac Beaumont">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">The Canadian Ghost: 1,500HP Pontiac Beaumont</h2>
+                    <p class="kinetic-card__excerpt">A twin-turbocharged declaration of mechanical war. Heritage meets rebellion in this 502ci Big Block masterpiece.</p>
+                    <a href="#" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
 
-            <p>It doesn’t just rewrite the rules of classic performance—it erases them entirely.</p>
+            <!-- Story 2: Placeholder -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/car4.png" alt="Track Analytics">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">The Dark Art of Aerodynamics</h2>
+                    <p class="kinetic-card__excerpt">Decoding aero-profiles and active telemetry mapping in the world's most aggressive track environments.</p>
+                    <a href="#" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
 
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">A Forgotten Canadian Icon</h3>
+            <!-- Story 3: Placeholder -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/car1.png" style="opacity: 0.6;" alt="Materials">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">Titanium vs Carbon Fiber: The Weight of Speed</h2>
+                    <p class="kinetic-card__excerpt">Analyzing structural rigidity and thermal resistance in high-hostility combustion zones.</p>
+                    <a href="#" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
 
-            <p>Before we get to the violence lurking under the hood, it’s worth understanding the canvas.</p>
-
-            <p>The Beaumont is one of those beautifully obscure chapters in automotive history—a Canadian-market creation born from General Motors’ need to satisfy domestic production rules in the 1960s. Built between 1966 and 1969, it blended Chevrolet underpinnings with Pontiac styling cues, essentially becoming a uniquely Canadian hybrid of Chevelle muscle and GTO attitude.</p>
-
-            <p>In its purest form, the Beaumont was never meant to be outrageous. It was subtle. Understated. A quiet insider’s muscle car.</p>
-
-            <p>This one? Not so much.</p>
-
-            <!-- Embedded Photo 1 -->
-            <img src="assets/car1.png" style="width: 100%; border-radius: 8px; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">The Heart of a Monster</h3>
-
-            <p>Let’s be clear: this is not a restoration.</p>
-            <p>This is a declaration of war.</p>
-
-            <p>Under the hood sits a twin-turbocharged 502 cubic-inch (8.2L) big-block V8, meticulously built and force-fed by a pair of turbos. The result? Over 1,500 horsepower, dyno-proven.</p>
-
-            <p>That kind of power doesn’t belong in 1966. Frankly, it barely belongs in 2026.</p>
-
-            <p>Backing it up is a T56 Magnum 6-speed manual, sending power to a bulletproof Ford 9-inch rear end. This isn’t just about brute force—it’s engineered brutality, the kind you can actually control… assuming your right foot has discipline.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">Built, Not Restored</h3>
-
-            <p>The real story here is the build quality.</p>
-            <p>This Beaumont rides on a modern Art Morrison Max G chassis, paired with C5 Corvette suspension components and a triangulated four-link rear.</p>
-
-            <p>Translation? It handles like something born decades later—because, in many ways, it was.</p>
-
-            <p>Braking is handled by Wilwood performance discs, hiding behind aggressive modern wheels. Grip is massive. Stance is perfect. Nothing about this car is accidental.</p>
-
-            <!-- Embedded Photo 2 -->
-            <img src="assets/car2.png" style="width: 100%; border-radius: 8px; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">A Global Interior in a Canadian Body</h3>
-
-            <p>Then you step inside… and the story shifts again.</p>
-            <p>This isn’t a time capsule—it’s a curated collision of automotive royalty:</p>
-
-            <ul style="margin-left: 2rem; margin-bottom: 2rem; list-style-type: square; color: #aaa;">
-                <li>Aston Martin interior elements</li>
-                <li>Audi R8 mirrors</li>
-                <li>Recaro performance seats (heated, ventilated, power-adjustable)</li>
-                <li>A hidden roll cage, integrated cleanly into the cabin</li>
-            </ul>
-
-            <p>It’s part muscle car, part European grand tourer, part track weapon.<br>And somehow, it works.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">The Philosophy of Excess</h3>
-
-            <p>Cars like this exist in a strange space.</p>
-            <ul style="list-style: none; margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid #555;">
-                <li>They aren’t restorations.</li>
-                <li>They aren’t replicas.</li>
-                <li>They aren’t even restomods in the traditional sense.</li>
-            </ul>
-
-            <p>They are reinterpretations—what happens when you take a historically overlooked platform and ask:</p>
-
-            <blockquote style="font-size: 1.6rem; font-style: italic; color: #fff; margin: 2rem 0; padding-left: 2rem; border-left: 4px solid var(--accent-amber);">“What if this had no limits?”</blockquote>
-
-            <p>The answer is sitting here in gloss black, idling with the quiet menace of something that knows exactly how dangerous it is.</p>
-
-            <h3 style="font-size: 1.5rem; color: var(--accent-amber); margin-top: 2.5rem; margin-bottom: 1rem;">Price of Madness</h3>
-
-            <p>Listed at roughly $300,000 CAD, this Beaumont isn’t cheap—but it’s also not trying to be.<br>Because you’re not just buying a car.</p>
-
-            <p>You’re buying:</p>
-            <ul style="margin-left: 2rem; margin-bottom: 2rem; list-style-type: square; color: #ccc;">
-                <li>A one-off build from a top-tier fabricator</li>
-                <li>A 1,500 horsepower statement piece</li>
-                <li>A slice of Canadian automotive history—rewritten</li>
-            </ul>
-
-            <h3 style="font-size: 1.5rem; color: #fff; margin-top: 3.5rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Final Verdict</h3>
-
-            <p>In a world flooded with predictable builds—LS swaps, bolt-ons, cookie-cutter restorations—this Beaumont feels like a punch in the chest.</p>
-
-            <p>It’s rare.<br>It’s unapologetic.<br>It’s wildly overbuilt.</p>
-
-            <p>And most importantly… it’s unforgettable.</p>
-
-            <p style="font-size: 1.4rem; color: #fff; margin-top: 4rem; text-align: center;">This isn’t just a car you drive.</p>
-            <p style="font-size: 2rem; font-weight: 700; color: var(--accent-amber); text-align: center; letter-spacing: 2px; margin-bottom: 4rem;">IT'S A CAR YOU SURVIVE.</p>
+            <!-- Story 4: Placeholder -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/car2.png" style="opacity: 0.6;" alt="Interiors">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">Curated Collisions: Luxury in the Cockpit</h2>
+                    <p class="kinetic-card__excerpt">Where Aston Martin detailing meets R8 precision. A masterclass in high-end automotive interiors.</p>
+                    <a href="#" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
         </div>
-    </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
