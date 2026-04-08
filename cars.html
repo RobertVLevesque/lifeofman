@@ -14,7 +14,147 @@
             overflow-y: auto;
             height: auto;
             background-color: #000;
+            cursor: auto;<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life of Man - Cars</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            overflow-y: auto;
+            height: auto;
+            background-color: #000;
             cursor: auto;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/car4.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .subpage-container {
+            background: rgba(10, 10, 12, 0.4); /* Lowered container backdrop opacity slightly so the 5% background shows through better */
+            min-height: 100vh;
+            padding: 6rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 3.5rem;
+            right: 4rem;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: 0.3s;
+            z-index: 100;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .subpage-title {
+            font-size: 4rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            margin-top: 4rem;
+        }
+
+        .subpage-content {
+            max-width: 800px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        .subpage-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .fade-out-header {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 12rem;
+            background: linear-gradient(to bottom, #000 20%, transparent);
+            z-index: 50;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fade-out-header"></div>
+    <a href="index.html" class="back-btn">← RETURN TO HUB</a>
+    <h1 class="magazine-title" style="top: 3.5rem; right: 4rem;">LIFE OF MAN</h1>
+
+    <div class="subpage-container">
+        <h1 class="subpage-title">CARS</h1>
+        <div class="stories-grid">
+            <!-- Story 1: Beaumont -->
+            <article class="story-card">
+                <div class="story-thumbnail">
+                    <img src="assets/Belmont_thumbnail.png" alt="1966 Pontiac Belmont">
+                </div>
+                <div class="story-details">
+                    <h2 style="font-family: 'Outfit', sans-serif;">The Canadian Ghost with 1,500 Horsepower: A 1966 Pontiac Beaumont Reborn</h2>
+                    <p class="story-excerpt">There are muscle cars… and then there are machines that feel like they’ve slipped through a crack in time—equal parts heritage, rebellion, and mechanical insanity.</p>
+                    <a href="#" class="read-more">READ STORY &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Story 2: Placeholder -->
+            <article class="story-card">
+                <div class="story-thumbnail">
+                    <img src="assets/car4.png" alt="Upcoming Story">
+                </div>
+                <div class="story-details">
+                    <h2 style="font-family: 'Outfit', sans-serif;">Track Analytics: The Dark Art of Downforce Optimization</h2>
+                    <p class="story-excerpt">Decoding the aero profiles of modern hypercars. A deep dive into active aerodynamics and high-G telemetry mapping across shifting asphalt terrains.</p>
+                    <a href="#" class="read-more">READ STORY &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Story 3: Placeholder -->
+            <article class="story-card">
+                <div class="story-thumbnail">
+                    <img src="assets/car1.png" style="opacity: 0.5;" alt="Upcoming Story">
+                </div>
+                <div class="story-details">
+                    <h2 style="font-family: 'Outfit', sans-serif;">Engineered Aggression: Titanium vs Carbon Fiber</h2>
+                    <p class="story-excerpt">Analyzing structural rigidity and thermal resistance in the world's most hostile combustion environments. Which material ultimately wins the violence of the track?</p>
+                    <a href="#" class="read-more">READ STORY &rarr;</a>
+                </div>
+            </article>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
         }
 
         body::before {
