@@ -357,4 +357,82 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateClock();
+
+    // --- Kinetic Engine 3D Story Feed ---
+    class KineticSlider {
+        constructor() {
+            this.viewport = document.querySelector('.kinetic-viewport');
+            this.ribbon = document.querySelector('.kinetic-ribbon');
+            this.cards = document.querySelectorAll('.kinetic-card');
+            
+            if (!this.viewport || !this.ribbon) return;
+
+            this.scrollPos = 0;
+            this.targetScroll = 0;
+            this.momentum = 0.08; // Silky smooth LERP constant
+            
+            this.init();
+        }
+
+        init() {
+            window.addEventListener('wheel', (e) => this.handleWheel(e), { passive: false });
+            this.animate();
+        }
+
+        handleWheel(e) {
+            e.preventDefault();
+            // Map vertical scroll Delta to horizontal Target
+            this.targetScroll += e.deltaY * 1.5;
+            
+            // Boundary constraints
+            const maxScroll = this.ribbon.offsetWidth - (window.innerWidth / 2);
+            this.targetScroll = Math.max(0, Math.min(this.targetScroll, maxScroll));
+        }
+
+        animate() {
+            // Smooth Interpolation (LERP)
+            this.scrollPos += (this.targetScroll - this.scrollPos) * this.momentum;
+            
+            // Apply Ribbon Movement
+            this.ribbon.style.transform = `translateX(${-this.scrollPos}px)`;
+
+            // --- Background Parallax Depth ---
+            // The fixed car4.png watermark shifts slightly opposite to the ribbon
+            const bg = document.querySelector('body::before'); 
+            // Since we can't easily target pseudo-elements in JS, we'll use a CSS variable
+            document.documentElement.style.setProperty('--kinetic-bg-x', `${this.scrollPos * 0.05}px`);
+            
+            // Calculate 3D Bloom & Perspective logic for each card
+            this.cards.forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                const center = window.innerWidth / 2;
+                const distance = rect.left + (rect.width / 2) - center;
+                const normalizedDistance = distance / center; // -1 to 1
+                
+                // Focus Logic
+                if (Math.abs(normalizedDistance) < 0.25) {
+                    card.classList.add('in-focus');
+                } else {
+                    card.classList.remove('in-focus');
+                }
+
+                // 3D Perspective Distortion
+                const rotateY = normalizedDistance * -20; // Swing away at edges
+                const translateZ = Math.max(-300, Math.abs(normalizedDistance) * -250);
+                const scale = Math.max(0.7, 1 - Math.abs(normalizedDistance) * 0.3);
+                
+                card.style.transform = `scale(${scale}) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+            });
+
+            // Magnetic Snapping Settlement
+            if (Math.abs(this.targetScroll - this.scrollPos) < 1 && this.targetScroll % 650 !== 0) {
+                 // Future logic for auto-snapping to card centers could go here
+            }
+
+            requestAnimationFrame(() => this.animate());
+        }
+    }
+
+    // Auto-boot if on a story subpage
+    new KineticSlider();
 });
