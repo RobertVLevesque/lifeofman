@@ -1,3 +1,52 @@
+// --- Mechanical Split-Flap (Airport Board) Engine ---
+class SplitFlap {
+    static chars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:/-";
+    
+    static animate(element, targetText) {
+        if (!element) return;
+        const target = targetText.toUpperCase();
+        let current = element.innerText.toUpperCase().padEnd(target.length, " ");
+        
+        // Ensure strings are same length for mechanical symmetry
+        if (current.length > target.length) current = current.substring(0, target.length);
+        
+        const charsArray = target.split("");
+        const displayArray = current.split("");
+        
+        let completed = 0;
+        const total = charsArray.length;
+        
+        const interval = setInterval(() => {
+            let frameOutput = "";
+            let finishedCount = 0;
+            
+            for (let i = 0; i < total; i++) {
+                const targetChar = charsArray[i];
+                const currentChar = displayArray[i];
+                
+                if (currentChar === targetChar) {
+                    frameOutput += targetChar;
+                    finishedCount++;
+                } else {
+                    // Find next char in sequence
+                    let idx = this.chars.indexOf(currentChar);
+                    if (idx === -1) idx = 0;
+                    const nextIdx = (idx + 1) % this.chars.length;
+                    const nextChar = this.chars[nextIdx];
+                    displayArray[i] = nextChar;
+                    frameOutput += nextChar;
+                }
+            }
+            
+            element.innerText = frameOutput;
+            
+            if (finishedCount === total) {
+                clearInterval(interval);
+            }
+        }, 30); // 30ms "clatter" speed
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // --- UI Elements ---
     const cursor = document.getElementById('cursor');
@@ -193,13 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
             activeSectionIndex = currentIndex;
             isHudAwake = shouldHudBeAwake;
 
-            // Dynamically scale watch face by -10% at each scroll boundary (Click). Caps at 70%.
+            // Persistent Scale & Position: Watch face remains at 0.7 for premium feel
             if (watchContainer) {
                 if (!isHudAwake) {
-                    watchContainer.style.transform = `translateX(-15%) scale(1.0)`;
+                    watchContainer.style.transform = `translateX(-15%) translateY(-5%) scale(1.0)`;
                 } else {
-                    const targetScale = Math.max(0.7, 1.0 - ((currentIndex + 1) * 0.1));
-                    watchContainer.style.transform = `translateX(-15%) scale(${targetScale})`;
+                    // Lock scale at 70% as requested
+                    watchContainer.style.transform = `translateX(-15%) translateY(-5%) scale(0.7)`;
                 }
             }
 
@@ -228,13 +277,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const data = sectionsData[currentIndex];
                     
-                    dynSectionName.innerText = data.title;
-                    dynLabel1.innerText = data.label1;
-                    dynValue1.innerText = data.value1;
-                    dynLabel2.innerText = data.label2;
-                    dynValue2.innerText = data.value2;
-                    dynLabel3.innerText = data.label3;
-                    dynValue3.innerText = data.value3;
+                    // Split-Flap mechanical animation for HUD values
+                    SplitFlap.animate(dynSectionName, data.title);
+                    SplitFlap.animate(dynValue1, data.value1);
+                    SplitFlap.animate(dynValue2, data.value2);
+                    SplitFlap.animate(dynValue3, data.value3);
+
+                    // These labels are usually static but we can flap them too for extra hardware feel
+                    SplitFlap.animate(dynLabel1, data.label1);
+                    SplitFlap.animate(dynLabel2, data.label2);
+                    SplitFlap.animate(dynLabel3, data.label3);
 
                     // Mechanical Cascade: Individually snap each sub-element staggered by 60 milliseconds
                     const rows = dataPointsBox.querySelectorAll('.data-row');
