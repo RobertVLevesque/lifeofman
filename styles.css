@@ -138,7 +138,7 @@ body {
     position: relative;
     width: 800px;
     height: 800px;
-    transform: translateX(-15%) translateY(-5%) scale(1); /* Raised slightly from center */
+    transform: translateX(-15%) translateY(-10%) scale(0.7); /* Hard-locked small scale from the start */
     display: flex;
     align-items: center;
     justify-content: center;
