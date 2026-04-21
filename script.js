@@ -1,6 +1,6 @@
 // --- Mechanical Split-Flap (Airport Board) Engine ---
 class SplitFlap {
-    static chars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:/-";
+    static chars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:/-,&'()";
     
     static animate(element, targetText) {
         if (!element) return;
@@ -242,13 +242,14 @@ document.addEventListener("DOMContentLoaded", () => {
             activeSectionIndex = currentIndex;
             isHudAwake = shouldHudBeAwake;
 
-            // Persistent Scale & Position: Watch face remains at 0.7 for premium feel
+            // Persistent Scale & Position: Watch face remains at 0.7 from start
             if (watchContainer) {
                 if (!isHudAwake) {
-                    watchContainer.style.transform = `translateX(-15%) translateY(-5%) scale(1.0)`;
+                    // Initial Landing state (also 0.7 but slightly more centered)
+                    watchContainer.style.transform = `translateX(-15%) translateY(-10%) scale(0.7)`;
                 } else {
-                    // Lock scale at 70% as requested
-                    watchContainer.style.transform = `translateX(-15%) translateY(-5%) scale(0.7)`;
+                    // Locked active state
+                    watchContainer.style.transform = `translateX(-15%) translateY(-10%) scale(0.7)`;
                 }
             }
 
