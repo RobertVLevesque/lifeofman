@@ -1,31 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life of Man - Woman</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;600&display=swap"
+        rel="stylesheet">
     <style>
-        body { overflow-y: auto; height: auto; background-image: url('assets/woman_bg.png'); background-size: cover; background-position: center; background-attachment: fixed; cursor: auto; }
-        .subpage-container { background: rgba(10,10,12,0.85); min-height: 100vh; padding: 6rem; backdrop-filter: blur(10px); }
-        .back-btn { position: fixed; bottom: 3.5rem; right: 4rem; color: var(--text-main); font-family: 'JetBrains Mono', monospace; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 4px; transition: 0.3s; z-index: 100; letter-spacing: 1px;}
-        .back-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: scale(1.05); }
-        .subpage-title { font-size: 4rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; margin-top: 4rem;}
-        .subpage-content { max-width: 800px; font-size: 1.2rem; line-height: 1.8; color: #ccc; font-weight: 300; }
-        .subpage-content p { margin-bottom: 1.5rem; }
+        body {
+            overflow: hidden; /* Lock native scroll */
+            height: 100vh;
+            background-color: #000;
+            cursor: auto;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/woman_story1_thumb.png');
+            background-size: cover;
+            background-position: calc(center + var(--kinetic-bg-x, 0px));
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 3.5rem;
+            right: 4rem;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: 0.3s;
+            z-index: 100;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .subpage-title {
+            position: fixed;
+            top: 6rem;
+            left: 6rem;
+            font-size: 5rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin: 0;
+            z-index: 10;
+            opacity: 0.15;
+            pointer-events: none;
+            color: var(--accent-amber);
+        }
     </style>
 </head>
+
 <body>
+    <div class="fade-out-header"></div>
     <a href="index.html" class="back-btn">← RETURN TO HUB</a>
     <h1 class="magazine-title" style="top: 3.5rem; right: 4rem;">LIFE OF MAN</h1>
-    
-    <div class="subpage-container">
-        <h1 class="subpage-title">WOMAN</h1>
-        <div class="subpage-content">
-            <p>Charcoal and soft gold lighting striking deep velours. Grace, fire, and absolute sophistication standing tall against all boundaries.</p>
-            <p>This section is a dedicated placeholder for editorial content acknowledging female elegance and narrative brilliance in the journey.</p>
+
+    <h1 class="subpage-title">WOMAN</h1>
+
+    <main class="kinetic-viewport">
+        <div class="kinetic-ribbon">
+            <!-- Story 1 -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/woman_story1_thumb.png" alt="Shadow & Silk">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">Shadow & Silk</h2>
+                    <p class="kinetic-card__excerpt">Exploration of nocturnal photography where charcoal tones meet the fluid geometry of silk fabrication.</p>
+                    <a href="woman_story1.html" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Story 2 -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/woman_story2_thumb.png" alt="The Velvet Hour">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">The Velvet Hour</h2>
+                    <p class="kinetic-card__excerpt">An immersive study of high-contrast texture. Where luxury interior design meets the softest charcoal velvet.</p>
+                    <a href="woman_story2.html" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Story 3 -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/woman_story3_thumb.png" alt="Monolith Form">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">Monolith Form</h2>
+                    <p class="kinetic-card__excerpt">Architectural fashion and silhouette logic. A woman standing against the sharp geometry of charcoal monoliths.</p>
+                    <a href="woman_story3.html" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Story 4 -->
+            <article class="kinetic-card">
+                <div class="kinetic-card__image-wrap">
+                    <img src="assets/woman_story4_thumb.png" alt="Charcoal Theory">
+                </div>
+                <div class="kinetic-card__content">
+                    <h2 class="kinetic-card__title">Charcoal Theory</h2>
+                    <p class="kinetic-card__excerpt">Cinematic lighting study in the golden hour. Radiant skin tones captured against a deep charcoal abyss.</p>
+                    <a href="woman_story4.html" class="kinetic-card__cta">READ STORY &rarr;</a>
+                </div>
+            </article>
         </div>
-    </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
